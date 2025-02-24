@@ -37,10 +37,12 @@ class TaskCard extends StatelessWidget {
               children: [
                 Text(title,
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontFamily: 'Lexend Deca',
                         color: color)),
-                Text(task, style: TextStyle(fontSize: 14)),
+                Text(task,
+                    style: TextStyle(fontSize: 14, fontFamily: 'Lexend Deca')),
               ],
             ),
           ),
@@ -67,7 +69,7 @@ class StatusBadge extends StatelessWidget {
         bgColor = Colors.grey;
         break;
       case "In Progress":
-        bgColor = Colors.grey;
+        bgColor = Color(0xFFCEEBDC);
         break;
       default:
         bgColor = Colors.grey;
@@ -78,7 +80,7 @@ class StatusBadge extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Text(status, style: TextStyle(color: Colors.white)),
+      child: Text(status, style: TextStyle(color: Colors.black)),
     );
   }
 }

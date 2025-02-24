@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:test02/App_color.dart';
 import 'package:test02/TaskCard.dart';
-
+import 'App_Assets.dart';
 import 'FilterButton.dart';
+import 'Text_From.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          scaffoldBackgroundColor: AppColor.background,
+          appBarTheme: AppBarTheme(backgroundColor: AppColor.background)),
       debugShowCheckedModeBanner: false,
-      home: TaskScreen(),
+      home: TextFrom(),
     );
   }
 }
@@ -25,10 +31,10 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFf3f5f4),
       appBar: AppBar(
         actions: [
           Container(
+            margin: EdgeInsets.all(8),
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             decoration: BoxDecoration(
               color: Color(0xFFceefde),
@@ -41,16 +47,25 @@ class TaskScreen extends StatelessWidget {
                 ),
                 SizedBox(width: 5),
                 Text(
-                  "Add ",
+                  "Add",
+                  style: TextStyle(fontFamily: AppAssets.font),
                 ),
               ],
             ),
           )
         ],
-        leading: Icon(Icons.arrow_back_ios_new),
-        title: Text("Today Tasks"),
+        leading: SvgPicture.asset(
+          AppAssets.arrowBack,
+          fit: BoxFit.scaleDown,
+          width: 24,
+          height: 24,
+        ),
+        title: Text(
+          "Today Tasks",
+          style: TextStyle(fontFamily: AppAssets.font),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.background,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -62,7 +77,9 @@ class TaskScreen extends StatelessWidget {
               children: [
                 FilterButton(text: "All", isSelected: true),
                 SizedBox(width: 10),
-                FilterButton(text: "Future"),
+                FilterButton(
+                  text: "Future",
+                ),
                 SizedBox(width: 10),
                 FilterButton(text: "Missed"),
                 SizedBox(width: 10),
@@ -74,11 +91,14 @@ class TaskScreen extends StatelessWidget {
               children: [
                 Text(
                   'Results',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: AppAssets.font),
                 ),
                 SizedBox(width: 10),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   decoration: BoxDecoration(
                     color: Color(0xFFceefde),
                     borderRadius: BorderRadius.circular(20),

@@ -9,7 +9,7 @@ class FilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
       decoration: BoxDecoration(
         color: isSelected ? Colors.green : Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -19,7 +19,9 @@ class FilterButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+        style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontFamily: 'Lexend Deca'),
       ),
     );
   }
