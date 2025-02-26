@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test02/App_Assets.dart';
 
 class DropdownOption extends StatefulWidget {
   const DropdownOption({super.key});
@@ -8,19 +9,19 @@ class DropdownOption extends StatefulWidget {
 }
 
 class _DropdownOptionState extends State<DropdownOption> {
-  String slectOptions = "Selected Option";
+  String selectedOption = "Selected Option";
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 63,
-      child: Card(
-        color: Colors.white,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: DropdownButton(
-            underline: SizedBox(),
+    return Card(
+      color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
             isExpanded: true,
-            value: slectOptions,
+            value: selectedOption,
+            dropdownColor: Colors.white,
             items: options.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -30,19 +31,39 @@ class _DropdownOptionState extends State<DropdownOption> {
                       radius: 15,
                       backgroundImage: AssetImage('assets/photo/plastien.png'),
                     ),
-                    SizedBox(
-                      width: 5,
+                    SizedBox(width: 15),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello!',
+                          style: TextStyle(
+                            fontFamily: AppAssets.font,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        Text(
+                          value,
+                          style: TextStyle(
+                            fontFamily: AppAssets.font,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(value)
                   ],
                 ),
               );
             }).toList(),
             onChanged: (String? newValue) {
               setState(() {
-                slectOptions = newValue!;
+                selectedOption = newValue!;
               });
             },
+            menuMaxHeight: 300,
+            borderRadius: BorderRadius.circular(20),
           ),
         ),
       ),

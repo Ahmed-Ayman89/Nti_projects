@@ -14,12 +14,16 @@ class OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      
       color: Colors.white,
       child: ListTile(
         leading: icon,
         title: Text(
           title,
-          style: TextStyle(fontFamily: AppAssets.font, fontSize: 14),
+          style: TextStyle(
+              fontFamily: AppAssets.font,
+              fontSize: 14,
+              fontWeight: FontWeight.w300),
         ),
         trailing: trailing,
         onTap: () {},
