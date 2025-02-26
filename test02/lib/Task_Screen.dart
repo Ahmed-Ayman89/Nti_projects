@@ -37,11 +37,16 @@ class TaskScreen extends StatelessWidget {
             ),
           )
         ],
-        leading: SvgPicture.asset(
-          AppAssets.arrowBack,
-          fit: BoxFit.scaleDown,
-          width: 24,
-          height: 24,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: SvgPicture.asset(
+            AppAssets.arrowBack,
+            fit: BoxFit.scaleDown,
+            width: 24,
+            height: 24,
+          ),
         ),
         title: Text(
           "Today Tasks",
